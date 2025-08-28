@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>SysnetCertificate</name>
+  </assembly>
+  <members>
+    <member name="T:SysnetCertificates.Certificate">
+      <summary>
+            Manage your own PKI
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setSignAlgSHA256">
+      <summary>
+            Set Signing algorithim to SHA256
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setSignAlgSHA384">
+      <summary>
+            Set Signing algorithim to SHA384
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setSignAlgSHA512">
+      <summary>
+            Set Signing algortithm to SHA12
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getSignAlg">
+      <summary>
+            Getter for SigAlg
+            </summary>
+      <returns>The signing algorithm</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setAsymmetricKeyTypeECC">
+      <summary>
+            Set Asymmetric Key Type to ECC
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setAsymmetricKeyTypeRSA">
+      <summary>
+            Set Asymmetric Key Type to RSA
+            </summary>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getAsymmetricKeyType">
+      <summary>
+            Getter of AsymmetricKeyType
+            </summary>
+      <returns>The last error message</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getLastError">
+      <summary>
+            Getter of lastError
+            </summary>
+      <returns>The last error message</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setECCEncryptionLength(System.Int32)">
+      <summary>
+            Specify the ECC curve from the secpNNNr1 family."
+            </summary>
+      <param name="bitsize">192, 224, 256, 384, 521 valid bit sizes</param>
+      <returns>True if a valid bit size is passed; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getEncryptionCurve">
+      <summary>
+            Getter for curve
+            </summary>
+      <returns>The ECC Curve</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setRSAEncryptionLength(System.Int32)">
+      <summary>
+            Specify the RSA key bit size."
+            </summary>
+      <param name="bitsize">2048, 3072, 4096 valid bit sizes</param>
+      <returns>True if a valid bit size is passed; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getRSAKeySize">
+      <summary>
+            Getter for RsaKeySize
+            </summary>
+      <returns>The RSA KeySize</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.setValidity(System.Int32)">
+      <summary>
+            Sets the validity of the certificate in days. Default 365. Max: 3650 (10 years)
+            </summary>
+      <param name="days">Validity of the certificate</param>
+      <returns>True if days is between 1 and 3650; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.getValidity">
+      <summary>
+            Getter for TimeSpanValidity
+            </summary>
+      <returns>validity in days</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.GenerateKeyPair(Org.BouncyCastle.Security.SecureRandom)">
+      <summary>
+            Generate a key pair of the AsymetricKeyType
+            </summary>
+      <param name="random">Secure Random</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.CreateSignatureFactory(Org.BouncyCastle.Security.SecureRandom)">
+      <summary>
+            Produces a certificate signature from the CA Private Key
+            </summary>
+      <param name="random">Secure Random</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.CreateSubjectPublicKey(Org.BouncyCastle.Crypto.AsymmetricKeyParameter)">
+      <summary>
+            Generates de Public Key Field to put in the certificate, according to the Cypher type
+            </summary>
+      <param name="publicKey">Certificate's Public Key</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.ParseSanList">
+      <summary>
+            Builds the List of alternative Subject Names
+            </summary>
+      <returns>The List of Alternative Subject Names</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.generateCa">
+      <summary>
+            Generates a Self Signed Certificate Authority ECC certificate with Private Key
+            </summary>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.saveCaToPkcs12(System.String,System.String,System.String)">
+      <summary>
+            Exports de CA Certificate and Private Key to a PKCS#12 (PFX) file
+            </summary>
+      <param name="outputPath">Full path of the p12 or pfx file</param>
+      <param name="password">Password to encrypt the private key</param>
+      <param name="alias">Optional, alias Key Entry</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.saveCaAsPEM(System.String,System.String)">
+      <summary>
+            Exports the CA certificate and UNENCRYPTED Private Key if keyPath is passed
+            </summary>
+      <param name="certPath">Full path of the certificate file</param>
+      <param name="keyPath">Optional: Full path of the Private Key file</param>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.loadCaFromPkcs12(System.String,System.String,System.String)">
+      <summary>
+            Loads the CA Certificate from a PKCS#12 (PFX) file
+            </summary>
+      <param name="pkcs12Path">Fullpath of the PKCS#12 file</param>
+      <param name="password">Password to decrypt the private key</param>
+      <param name="alias">Optional, Name of the entry in the PKCS#12 file</param>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.BuildSubjectDn">
+      <summary>
+            Builds the subject field of the certificate from the class properties.
+            </summary>
+      <returns>X509 Subject fields</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.issueCertificate(System.Boolean)">
+      <summary>
+            Generates a certificate signed by the previously loaded CA certificate private key.
+            </summary>
+      <param name="forClient">True for client authentication. False for server authentication (default).</param>
+      <returns>True if successful; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.renewCertificate">
+      <summary>
+            Renews a certificate keeping the current key pair
+            </summary>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.renewCertificateWithNewKeys">
+      <summary>
+            Renews a certificate with a new key pair
+            </summary>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.saveToPkcs12(System.String,System.String,System.String)">
+      <summary>
+            Exports the issued or renewed certificate and private key to a PKCS#12 (PFX) file.
+            </summary>
+      <param name="outputPath">Full path of the PKCS#12 file</param>
+      <param name="password">Password used to encrypt the private key</param>
+      <param name="alias">Optional. Key entry. Default cert</param>
+      <returns>True if successfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.saveCertificateAsPem(System.String)">
+      <summary>
+            Exports the signed certificate (this.certAssinado) as PEM to the specified file.
+            </summary>
+      <param name="filePath">Path where the PEM certificate will be written.</param>
+      <returns>True on success; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.savePrivateKeyAsPem(System.String)">
+      <summary>
+            Exports the UNENCRYPTED certificate private key 
+            </summary>
+      <param name="filePath">Full path of the pem file</param>
+      <returns>True if succesfull; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.loadCertificateFromPem(System.String)">
+      <summary>
+            Loads a certificate from a PEM file into this.cert.
+            </summary>
+      <param name="filePath">Path to the PEM file containing the certificate.</param>
+      <returns>True if loaded successfully; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.loadPrivateKeyFromPem(System.String)">
+      <summary>
+            Loads a private key from a PEM file into this.privateKey.
+            Supports PKCS#1/PKCS#8 private key PEMs and unencrypted PEM keypairs.
+            </summary>
+      <param name="filePath">Path to the PEM file containing the private key.</param>
+      <returns>True if loaded successfully; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.loadCertFromPkcs12(System.String,System.String)">
+      <summary>
+            Loads a PKCS#12 file containing both certificate and private key into this.cert and this.privateKey.
+            </summary>
+      <param name="filePath">Path to the PKCS#12 (.p12/.pfx) file.</param>
+      <param name="password">Password for the PKCS#12 file (can be null or empty if none).</param>
+      <returns>True if certificate+key loaded; otherwise false and this.lastError is set.</returns>
+    </member>
+    <member name="M:SysnetCertificates.Certificate.exportCertificateToJSON">
+      <summary>
+            Exports all the relevant certificate data to a JSON.
+            </summary>
+      <returns>JSON String or empty String on error with lastError set</returns>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.CommonName">
+      <summary>
+            Subject.CommonName
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.Email">
+      <summary>
+            Subject.Email
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.Organization">
+      <summary>
+            Subject.Organization
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.OrganizationalUnit">
+      <summary>
+            Subject.OrganizationalUnit
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.Locality">
+      <summary>
+            Subject.Locality
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.State">
+      <summary>
+            Subject.State or Province
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.Country">
+      <summary>
+            Subject.Country
+            </summary>
+    </member>
+    <member name="P:SysnetCertificates.Certificate.SanList">
+      <summary>
+            Comma or Semicolon separated Alternative Subject Names
+            </summary>
+    </member>
+  </members>
+</doc>
