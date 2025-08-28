@@ -42,18 +42,40 @@ Run CMD as an Administrator
 
 ### Examples
 testECCcertificate.prg wil perform the following tasks:
-1. Generate the CA Certificate (ECC 521bits)
+1. Generate the CA Certificate (ECC 521bits, self signed with SHA512ECDSA)
 2. Save the CA Certificate and Private key to a secure PKCS#12 file
 3. Export the CA Certificate to ca.cer file (not the private key)
-4. Create a Server Certificate (ECC 384bits)
+4. Create a Server Certificate (ECC 384bits, signed with the CA SHA256ECDSA Key)
 5. Save the Server Certificate and Private key to a secure PKCS#12 file
 6. Export the Server certificate and UNENCRYTPTED private key. Necessary for Apache, NGINX, MYSQL
-7. Create a Client Certificate (ECC 256bits)
+7. Create a Client Certificate (ECC 256bits, , signed with the CA SHA256ECDSA Key)
 8. Save the client Certificate and Private key to a secure PKCS#12 file
 9. Export the client certificate and UNENCRYTPTED private key.
 10. Renew the client certficate, keeping the orignial key pair.
 
+testRSAcertificate.prg wil perform the following tasks:
+1. Generate the CA Certificate (RSA 4096bits, self signed with SHA512RSA)
+2. Save the CA Certificate and Private key to a secure PKCS#12 file
+3. Export the CA Certificate to ca.cer file (not the private key)
+4. Create a Server Certificate (ECC 3072bits, signed with SHA256RSA)
+5. Save the Server Certificate and Private key to a secure PKCS#12 file
+6. Export the Server certificate and UNENCRYTPTED private key. Necessary for Apache, NGINX, MYSQL
+7. Create a Client Certificate (ECC 2048bits, signed with SHA256RSA)
+8. Save the client Certificate and Private key to a secure PKCS#12 file
+9. Export the client certificate and UNENCRYTPTED private key.
+10. Renew the client certficate, keeping the orignial key pair.
 
+testcertificateRSAECC.prg wil perform the following tasks:
+1. Generate the CA Certificate (RSA 4096bit, self signed with SHA512RSA)
+2. Save the CA Certificate and Private key to a secure PKCS#12 file
+3. Export the CA Certificate to ca.cer file (not the private key)
+4. Create a Server Certificate (ECC 384bits, signed with the SHA256RSA)
+5. Save the Server Certificate and Private key to a secure PKCS#12 file
+6. Export the Server certificate and UNENCRYTPTED private key. Necessary for Apache, NGINX, MYSQL
+7. Create a Client Certificate (ECC 256bits, signed with the SHA256RSA)
+8. Save the client Certificate and Private key to a secure PKCS#12 file
+9. Export the client certificate and UNENCRYTPTED private key.
+10. Renew the client certficate, keeping the orignial key pair.
 
 ### Distribution
 Yoy may distribute SysnetCertificates.dll freely with your porjects.
