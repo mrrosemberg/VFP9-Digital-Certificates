@@ -8,7 +8,7 @@ Uses BouncyCastle 1.8.9 (merged) and works for both 32 and 64bit Operating Syste
 **Minimun .net Version:** 4.0
 
 ### Author:
-**Marcio R. Rosemberg D.Sc.
+**Marcio R. Rosemberg D.Sc.**
 
 ### Lastest Release:
 v.1.0.0 - 2025.08.28
