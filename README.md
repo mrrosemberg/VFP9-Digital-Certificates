@@ -29,7 +29,7 @@ EccCertificate.prg is wrapper for SysnetCertificates. It can instantiate SysnetC
   ENDIF
   certCOM = NEWOBJECT('EccCertificate','EccCertificate.prg','',.t.) && instantiate SysnetCertificates.dll as a COM client
   IF NOT EMPTY(certCOM.getLastError()) && SysnetCertificate.dll is not propperly registered
-     messageBox(certCOMM.getLastError())
+     messageBox(certCOM.getLastError())
      RETURN
   ENDIF
 </pre>
